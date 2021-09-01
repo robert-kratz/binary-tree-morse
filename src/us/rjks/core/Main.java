@@ -14,12 +14,6 @@ public class Main {
     public static void main(String[] args) {
         Formatter formatter = new Formatter();
         formatter.setVisible(true);
-
-        MorseCodierung morseCodierung = new MorseCodierung();
-
-        System.out.println(morseCodierung.encodeString("Hello World"));
-
-        System.out.println(morseCodierung.decodeString("... --- ..."));
     }
 }
 

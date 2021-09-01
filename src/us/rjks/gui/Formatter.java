@@ -79,14 +79,19 @@ public class Formatter extends JFrame {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(input.getText());
-                if (input.getText() == null || input.getText().isEmpty()) return;
-
-                if (state.equals(State.ENCODE)) {
-                    output.setText(morseCodierung.encodeString(input.getText()));
-                } else {
-                    output.setText(morseCodierung.decodeString(input.getText()));
+                if (input.getText() == null || input.getText().isEmpty()) {
+                    output.setText("An error has occurred, no translations were made");
+                    return;
                 }
+
+                String out;
+                if (state.equals(State.ENCODE)) {
+                    out = morseCodierung.encodeString(input.getText());
+
+                } else {
+                    out = morseCodierung.decodeString(input.getText());
+                }
+                output.setText(out);
             }
         });
 

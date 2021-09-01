@@ -99,8 +99,15 @@ public class MorseCodierung {
         text = text.toUpperCase();
         String enter = "";
         for (int i = 0; i < text.length(); i++) {
-            if(text.charAt(i) != ' ') enter = enter + encodeChar(text.charAt(i));
-            else enter = enter + " ";
+            if(text.charAt(i) != ' ') {
+                if (enter.isEmpty()) {
+                    enter = encodeChar(text.charAt(i));
+                } else {
+                    enter = enter + " " + encodeChar(text.charAt(i));
+                }
+            } else {
+                enter = enter + " ";
+            }
         }
         return enter;
     }

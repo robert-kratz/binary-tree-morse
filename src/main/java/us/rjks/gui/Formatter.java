@@ -83,7 +83,6 @@ public class Formatter extends JFrame {
                     output.setText("An error has occurred, no translations were made");
                     return;
                 }
-
                 String out;
                 if (state.equals(State.ENCODE)) {
                     out = morseCodierung.encodeString(input.getText());

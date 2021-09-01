@@ -1,12 +1,12 @@
 package us.rjks.utils;
 
-/***************************************************************************
- *
- *  Urheberrechtshinweis
- *  Copyright Ⓒ Robert Kratz 2021
- *  Erstellt: 01.09.2021 / 16:52
- *
- **************************************************************************/
+import java.util.StringTokenizer;
+
+/**
+ * Copyright Ⓒ Robert J. Kratz 2021
+ * Created: 01.09.2021 / 17:13
+ * Contact: https://link.rjks.us/support
+ */
 
 public class MorseCodierung {
 
@@ -69,7 +69,7 @@ public class MorseCodierung {
     /**
      * "..." -> 'S'
      * */
-    public Character decode(String code){
+    public Character decodeChar(String code){
         BinaryTree<Character> current = this.morsebaum;
         while (code.length() > 0 && current != null) {
             if(code.charAt(0) == '.') current = current.getLeftTree();
@@ -83,7 +83,7 @@ public class MorseCodierung {
     /**
      * 'A' -> "._"  // inverse search, empty path = ""
      * */
-    public String encode(char input) {
+    public String encodeChar(char input) {
         return search(this.morsebaum,"", input);
     }
 
@@ -95,13 +95,23 @@ public class MorseCodierung {
                 search(tree.getLeftTree(), name + ".", input);
     }
 
-    public String translate(String text) {
+    public String encodeString(String text) {
         text = text.toUpperCase();
         String enter = "";
         for (int i = 0; i < text.length(); i++) {
-            if(text.charAt(i) != ' ') enter = enter + encode(text.charAt(i));
+            if(text.charAt(i) != ' ') enter = enter + encodeChar(text.charAt(i));
             else enter = enter + " ";
         }
         return enter;
+    }
+
+    public String decodeString(String text) {
+
+        StringTokenizer tokenizer = new StringTokenizer(text, " ");
+        String element = "";
+        while (tokenizer.hasMoreElements()) {
+            element = element + decodeChar(tokenizer.nextToken());
+        }
+        return element;
     }
 }

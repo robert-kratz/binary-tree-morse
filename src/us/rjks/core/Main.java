@@ -1,21 +1,25 @@
 package us.rjks.core;
 
+import us.rjks.gui.Formatter;
 import us.rjks.utils.MorseCodierung;
 
-/***************************************************************************
- *
- *  Urheberrechtshinweis
- *  Copyright Ⓒ Robert Kratz 2021
- *  Erstellt: 01.09.2021 / 16:27
- *
- **************************************************************************/
+/**
+ * Copyright Ⓒ Robert J. Kratz 2021
+ * Created: 01.09.2021 / 17:13
+ * Contact: https://link.rjks.us/support
+ */
 
 public class Main {
 
     public static void main(String[] args) {
+        Formatter formatter = new Formatter();
+        formatter.setVisible(true);
+
         MorseCodierung morseCodierung = new MorseCodierung();
 
-        System.out.println(morseCodierung.translate("Hello World"));
-    }
+        System.out.println(morseCodierung.encodeString("Hello World"));
 
+        System.out.println(morseCodierung.decodeString("... --- ..."));
+    }
 }
+
